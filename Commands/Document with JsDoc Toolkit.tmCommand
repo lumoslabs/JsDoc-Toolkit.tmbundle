@@ -16,11 +16,27 @@ if [[ -z $files ]]; then
   files="$TM_FILEPATH"
 fi
 
+# ELI STUFF HERE
+# want to just use the entire source tree instead of selecting individual files
+files="$TM_PROJECT_DIRECTORY"
+# END ELI STUFF
+
 # generate the docs
 java -jar "$TM_BUNDLE_SUPPORT/bin/jsdoc-toolkit/jsrun.jar" "$TM_BUNDLE_SUPPORT/bin/jsdoc-toolkit/app/run.js" -c="$TM_BUNDLE_SUPPORT/bin/jsdoc.textmate.conf" -D="$TM_BUNDLE_SUPPORT/bin/jsdoc-toolkit/" $files
 
+# ELI STUFF HERE
+# move the docs to a location in the project, but only do so if the export dir was defined
+if [ -n "$JSDOC_EXPORT_DIR"  ]
+then
+    mkdir -p "$JSDOC_EXPORT_DIR"
+    cp -rf "$TM_BUNDLE_SUPPORT/bin/jsdoc-toolkit/out/jsdoc" "$JSDOC_EXPORT_DIR"
+    echo "cp -rf \"$TM_BUNDLE_SUPPORT/bin/jsdoc-toolkit/out/jsdoc\" \"$JSDOC_EXPORT_DIR\""
+fi
+# END ELI STUFF
+
 # view the docs
-echo "&lt;meta http-equiv='Refresh' content='0; tm-file:///$TM_BUNDLE_SUPPORT/bin/jsdoc-toolkit/out/jsdoc/index.html'&gt;"</string>
+#ELI: nope, don't want to view the docs, this hides output from JSDoc if there are issues
+#echo "&lt;meta http-equiv='Refresh' content='0; tm-file:///$TM_BUNDLE_SUPPORT/bin/jsdoc-toolkit/out/jsdoc/index.html'&gt;"</string>
 	<key>fallbackInput</key>
 	<string>scope</string>
 	<key>input</key>

@@ -49,3 +49,6 @@ Opens the [JsDoc Toolkit tag reference][jsdot] in TextMate's Web Preview window.
 [jsdop]:  http://code.google.com/p/jsdoc-toolkit/wiki/CommandlineOptions
 [jsdot]:  http://code.google.com/p/jsdoc-toolkit/wiki/TagReference
 [getb]:   http://svn.textmate.org/trunk/Review/Bundles/GetBundles.tmbundle/
+
+## Eli Stuff
+This will also export the docs to a more useful location. If you want to do that, though, you need to set up an environment variable. Go to Preferences>Variables and add in JSDOC_EXPORT_DIR then point it to DoubleWide/Lumosity/docs
